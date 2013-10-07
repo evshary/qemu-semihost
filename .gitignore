@@ -1,2 +1,5 @@
 hello.elf
 qemu-counter/build
+*.*.swp
+tags
+log.txt

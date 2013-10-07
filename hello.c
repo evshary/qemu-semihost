@@ -2,6 +2,8 @@
 #include <inttypes.h>
 
 #define READ_COUNTER_ADDR 0x40050000
+#define FILE_PATH "./log.txt"
+#define MAX_STR 1024
 
 int32_t *read_counter = (int32_t *) READ_COUNTER_ADDR;
 int main(void)
@@ -22,5 +24,14 @@ int main(void)
 	else {
 		printf("ERROR - Something is wrong with Read Counter\n");
 	}
+	printf("Now let's try read/write function\n");
+	FILE *fp;
+	char str[MAX_STR];
+	if((fp = fopen(FILE_PATH, "a")) != 0){
+		printf("Please enter your data, and it will be in ./log.txt\n");
+		fgets(str, MAX_STR, stdin);
+		fprintf(fp, "%s", str);
+	}
+	printf("Complete testing read/write function!\n");
 	return 0;
 }
